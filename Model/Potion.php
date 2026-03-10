@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App\Model;
+
+use App\Model\Product;
 use Category;
-use Product;
 
 class Potion extends Product
 {

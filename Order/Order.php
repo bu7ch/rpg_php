@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Order;
 
+use App\Model\Product;
 use App\Order\OrderItem;
 use Customer;
 use DateTime;
 use InvalidArgumentException;
 use OutOfBoundsException;
-use Product;
 use RuntimeException;
 
 /**
@@ -108,7 +108,6 @@ class Order
             );
         }
 
-        // Recherche si le produit est déjà dans la commande
         foreach ($this->items as $item) {
             if ($item->getProduct()->getId() === $product->getId()) {
                 throw new RuntimeException(
@@ -118,11 +117,9 @@ class Order
             }
         }
 
-        // Décrémente le stock
         $product->reduceStock($quantity);
 
-        // Ajoute l'item
-        $this->items[] = new OrderItem($product, $quantity);
+        $this->items[] = new OrderItem( $product, $quantity);
         $this->recalculateTotal();
     }
 
@@ -137,7 +134,6 @@ class Order
 
         foreach ($this->items as $key => $item) {
             if ($item->getProduct()->getId() === $productId) {
-                // Remet le stock en place
                 $currentStock = $product->getStock();
                 $product->setStock($currentStock + $item->getQuantity());
                 

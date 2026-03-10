@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Order;
 
-use Product;
+use App\Model\Product;
 
 /**
  * Représente une ligne de commande

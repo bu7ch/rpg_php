@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Cart;
 
+use App\Model\Product;
 use InvalidArgumentException;
 use OutOfBoundsException;
-use Product;
 
 
 
