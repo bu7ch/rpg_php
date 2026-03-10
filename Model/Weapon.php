@@ -8,6 +8,7 @@ use Product;
 class Weapon extends Product {
     private int $damage;
     private string $material;
+    
 
     public function __construct(int $id, string $name, float $price, Category $category, int $stock, int $damage, string $material)
     {
